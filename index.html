@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Newsaton</title>
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+			crossorigin="anonymous"
+		/>
+		<script src="https://code.jquery.com/jquery-3.6.1.min.js" crossorigin="anonymous"></script>
+		<script
+			src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+			crossorigin="anonymous"
+		></script>
+		<link rel="stylesheet" href="src/style.css" />
+	</head>
+
+	<body class="bg-dark mt-3">
+		<div class="container-fluid" style="width: 90%">
+			<div class="row d-flex">
+				<h1 id="Title" class="col container-fluid text-success text-center">ANSA.it</h1>
+				<h1 id="Title" class="col container-fluid text-light text-center">Aftenposten.no</h1>
+				<h1 id="Title" class="col container-fluid text-light text-center">Wired.com</h1>
+			</div>
+			<div class="row d-flex row-height">
+				<div id="feedAnsa" class="col left"></div>
+				<div id="feedAften" class="col center"></div>
+				<div id="feedWired" class="col right"></div>
+			</div>
+		</div>
+		<script src="src/app.js"></script>
+	</body>
+</html>
