@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<%- include ('./partials/head.ejs') %>
+	</head>
+	<body class="bg-dark mt-3">
+		<div id="columns" class="container-fluid">
+			<div class="row d-flex">
+				<h1 id="Title" class="col container-fluid text-success text-center">ANSA.it</h1>
+				<h1 id="Title" class="col container-fluid text-light text-center">Aftenposten.no</h1>
+			</div>
+			<div class="row d-flex row-height">
+				<div id="left" class="col"> 
+				<% ansa.forEach((ansa, index)=> { %>
+					<% if (ansa.img) { %>
+						<div class="Article container-fluid p-2 mb-3 bg-dark rounded">
+							<h3>
+								<a style="text-decoration-line: none;" 
+								class="link-light" 
+								href=<%='https://www.ansa.it' + ansa.url %>
+								target="blank"> <%= ansa.title %>
+									<img src=<%='https://www.ansa.it' + ansa.img %>
+									class="img-fluid w-100 rounded mt-1"/>
+								</a>
+							</h3>
+						</div>
+					<% } else { %>
+						<div class="Article container-fluid p-2 mb-3 bg-dark rounded">
+							<h3>
+								<a style="text-decoration-line: none;" 
+								class="link-light" 
+								href=<%='https://www.ansa.it' + ansa.url %>
+								target="blank"> <%= ansa.title %>
+								</a>
+							</h3>
+						</div>
+					<% }}); %>
+				</div>
+				<div id="right" class="col">
+					<% aften.forEach((aften, index)=> { %>
+						<div class="Article container-fluid p-2 mb-3 bg-dark rounded">
+							<h3>
+								<a style="text-decoration-line: none;" 
+								class="link-light" 
+								href=" <%= aften.url %> "
+								target="blank"> <%= aften.title %>
+									<img src= " <%= aften.img %> "
+									class="img-fluid w-100 rounded mt-1"/>
+								</a>
+							</h3>
+						</div>
+					<% }); %>
+				</div>
+			</div>
+		</div>
+	</body>
+</html>

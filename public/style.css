@@ -1,0 +1,45 @@
+body {
+	background-image: linear-gradient(rgba(0, 0, 0, 0.712), rgba(0, 0, 0, 0.89)),
+		url('../images/bg4.jpeg');
+	background-size: cover;
+	background-position: 50% 100%;
+
+	overflow-y: hidden;
+}
+
+.Article {
+	box-shadow: rgba(0, 0, 0, 0.932) 0px 5px 15px;
+}
+
+#Title {
+	text-shadow: rgba(0, 0, 0, 0.932) 0px 5px 10px;
+}
+
+#columns {
+	width: 80%;
+}
+
+/*setting columns to scroll independently*/
+.row-height {
+	height: 200vh;
+}
+
+#left {
+	height: 100%;
+	overflow-y: scroll;
+}
+
+#right {
+	height: 100%;
+	overflow-y: scroll;
+}
+
+/*Remove the scrollbar from Chrome, Safari, Edge and IE*/
+::-webkit-scrollbar {
+	width: 0px;
+	background: transparent;
+}
+
+* {
+	-ms-overflow-style: none !important;
+}
