@@ -54,10 +54,6 @@ exApp.get('/', (req, res, next) => {
 		})
 		.catch((err) => console.log(err));
 
-	axios.get('https://www.aftenposten.no/nyheter/', {
-		headers: { 'Accept-Encoding': 'gzip,deflate,compress' },
-	});
-
 	axios(urlAften)
 		.then((response) => {
 			const html = response.data;
@@ -77,6 +73,7 @@ exApp.get('/', (req, res, next) => {
 		})
 		.catch((err) => console.log(err));
 
+	//read stored jsons and render the 2 news columns
 	let ansa = fs.readFileSync(path.resolve(__dirname, '../data/ansa.json'));
 	let aften = fs.readFileSync(path.resolve(__dirname, '../data/aften.json'));
 
