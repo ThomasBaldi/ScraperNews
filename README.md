@@ -51,6 +51,7 @@ Such jsons files are then read and used sendt to the rendered index.ejs page.
 The index.ejs is set up to portay every single retrieved object that is stored in the arrays, in 2 separate columns, with a small box that has a title, url addresses that directly links to the relevant article and, if available, a relevant picture.
 
 This project was set up to ease my news browsing habits but most importantly to test some of the fundamentals I've learned during my developer studies.
+
 I realize the same or even better result could be achieved by utilizing for example some scraping-specific api. One could also for example have a filtering system set up,so that a user could choose which news papers' articles to have portrayed in the columns.
 
 ## Support
