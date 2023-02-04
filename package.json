@@ -1,8 +1,7 @@
 {
-	"name": "scraper-doo",
+	"name": "scraper-news",
 	"version": "1.0.0",
 	"description": "News scraping tool",
-	"private": true,
 	"scripts": {
 		"start": "supervisor node ./bin/www"
 	},
