@@ -14,7 +14,8 @@ const urlAften = 'https://www.aftenposten.no/nyheter/';
 
 //retrieve data when landing on homepage and store it in jsons
 exApp.get('/', (req, res, next) => {
-	axios(urlAnsa)
+	axios
+		.get(urlAnsa)
 		.then((response) => {
 			const html = response.data;
 			const $ = cheerio.load(html);
@@ -53,8 +54,12 @@ exApp.get('/', (req, res, next) => {
 			fs.writeFileSync(path.resolve(__dirname, '../data/ansa.json'), JSON.stringify(ansaNews));
 		})
 		.catch((err) => console.log(err));
+	next();
+});
 
-	axios(urlAften)
+exApp.get('/', (req, res, next) => {
+	axios
+		.get(urlAften)
 		.then((response) => {
 			const html = response.data;
 			const $ = cheerio.load(html);
@@ -72,7 +77,10 @@ exApp.get('/', (req, res, next) => {
 			fs.writeFileSync(path.resolve(__dirname, '../data/aften.json'), JSON.stringify(aftenNews));
 		})
 		.catch((err) => console.log(err));
+	next();
+});
 
+exApp.get('/', (req, res, next) => {
 	//read stored jsons and render the 2 news columns
 	let ansa = fs.readFileSync(path.resolve(__dirname, '../data/ansa.json'));
 	let aften = fs.readFileSync(path.resolve(__dirname, '../data/aften.json'));
