@@ -2,15 +2,15 @@
 
 ScraperNews is a personal project I made to test some basic knoledge on retrieving, saving and fetching data.
 
-I came up with the idea of wanting to have 2 of my "goto" news platforms in a simple one-pager app that has 2 scrollable columns populated with titles images and direct links to articles.
+I came up with the idea of wanting to have 2 of my "go to" news platforms in a simple one-pager app that has 2 scrollable columns populated with titles, images and direct links to the articles.
 
 ## Installation
 
 - Download the main branch of the repository with all its documents.
 
-- Unzip the files and save the folder somewhere on your computer.
+- Unzip the files and save the folder in a folder somewhere on your computer.
 
-- Open such folder in VScode and make sure you are in the right directory (ScraperNews)
+- Open such folder in VScode and make sure you are in the right directory.
 
 - Open the terminal and run `NPM install` to make sure that all dependencies are installed correctly and at their latest version.
 
@@ -23,7 +23,7 @@ For routing and HTTP requests:
 - Axios: (a Javascript library used to make HTTP requests from node. js or XMLHttpRequests from the browser)
 - Express: ( a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications)
 
-For restructuring the app and for managing/styling the frontend:
+For portraying/managing/styling the frontend:
 
 - EJS: (a templating engine for javascript)
 - Bootstrap: (a responsive website and mobile first CSS framework)
@@ -40,15 +40,16 @@ Middlewares for parsing/handling errors and more:
 
 # How the app works
 
-In a very simple way, as soon as the user lands on the homepage, an api call is made, which triggers a tailor made scraping of 2 news websites which occurs with axios calls.
+In a very simple way, as soon as the user lands on the homepage, an http call is made, which triggers a tailor made scraping of 2 news websites.
+This occurs with axios calls.
 
-Such scraping retrieves titles, url links and image links and stores them in array, there's an array for each website.
+Such scraping retrieves titles, url links and image links and stores them in an array, there's an array for each website.
 
 Thereafter, the arrays data is stored by writing 2 respectiv json files.
 
-Such jsons files are then read and used sendt to the rendered index.ejs page.
+Such jsons files are then read and rendered in the index.ejs page.
 
-The index.ejs is set up to portay every single retrieved object that is stored in the arrays, in 2 separate columns, with a small box that has a title, url addresses that directly links to the relevant article and, if available, a relevant picture.
+The index.ejs is set up to portray every single retrieved object that is stored in the arrays, in 2 separate columns, with a small box that has a title, url addresses that directly links to the relevant article and, if available, a relevant picture.
 
 This project was set up to ease my news browsing habits but most importantly to test some of the fundamentals I've learned during my developer studies.
 
