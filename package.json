@@ -3,7 +3,8 @@
 	"version": "1.0.0",
 	"description": "News scraping tool",
 	"scripts": {
-		"start": "supervisor node ./bin/www"
+		"start": "node ./bin/www",
+		"dev": "supervisor node ./bin/www"
 	},
 	"author": "Thomas Baldi",
 	"license": "ISC",
@@ -16,8 +17,6 @@
 		"express": "^4.18.2",
 		"http-errors": "^2.0.0",
 		"morgan": "^1.10.0",
-		"node": "^19.3.0",
-		"npm": "^9.2.0",
 		"supervisor": "^0.12.0"
 	}
 }
