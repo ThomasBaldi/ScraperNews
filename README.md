@@ -4,6 +4,9 @@ ScraperNews is a personal project I made to test some basic knoledge on retrievi
 
 I came up with the idea of wanting to have 2 of my "go to" news platforms in a simple one-pager app that has 2 scrollable columns populated with titles, images and direct links to the articles.
 
+Here is the actual deployed product if you'd simply like to see how it looks:
+https://scraper-news.cyclic.app/
+
 ## Installation
 
 - Download the main branch of the repository with all its documents.
