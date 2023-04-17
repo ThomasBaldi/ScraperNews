@@ -1,6 +1,6 @@
 # ScraperNews
 
-ScraperNews is a personal project I made to test some basic knoledge on retrieving, saving and fetching data.
+ScraperNews is a personal project I made to test some basic knowledge on retrieving, saving and fetching data.
 
 I came up with the idea of wanting to have 2 of my "go to" news platforms in a simple one-pager app that has 2 scrollable columns populated with titles, images and direct links to the articles.
 
