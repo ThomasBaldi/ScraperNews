@@ -1,13 +1,10 @@
 {
-	"homepage": "http://thomasbaldi.github.io/ScraperNews",
 	"name": "scraper-news",
 	"version": "1.0.0",
 	"description": "News scraping tool",
 	"scripts": {
 		"start": "node ./bin/www",
-		"dev": "supervisor node ./bin/www",
-		"predeploy": "npm run build",
-		"deploy": "gh-pages -d build"
+		"dev": "supervisor node ./bin/www"
 	},
 	"author": "Thomas Baldi",
 	"license": "ISC",
@@ -21,8 +18,5 @@
 		"http-errors": "^2.0.0",
 		"morgan": "^1.10.0",
 		"supervisor": "^0.12.0"
-	},
-	"devDependencies": {
-		"gh-pages": "^5.0.0"
 	}
 }
