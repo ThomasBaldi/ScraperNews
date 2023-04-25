@@ -2,7 +2,7 @@ const express = require('express');
 const axios = require('axios');
 const cheerio = require('cheerio');
 const cors = require('cors');
-const fs = require('@cyclic.sh/s3fs')(S3_BUCKET_NAME);
+const fs = require('@cyclic.sh/s3fs')(process.env.CYCLIC_BUCKET_NAME);
 const path = require('path');
 
 const exApp = express();
@@ -51,7 +51,7 @@ const getData = async () => {
 					img,
 				});
 			});
-			fs.writeFileSync(path.resolve(__dirname, '../data/ansa.json'), JSON.stringify(ansaNews));
+			fs.writeFileSync('ansa.json'), JSON.stringify(ansaNews);
 		})
 		.catch((err) => console.log(err));
 
@@ -71,7 +71,7 @@ const getData = async () => {
 					img,
 				});
 			});
-			fs.writeFileSync(path.resolve(__dirname, '../data/aften.json'), JSON.stringify(aftenNews));
+			fs.writeFileSync('aften.json'), JSON.stringify(aftenNews);
 		})
 		.catch((err) => console.log(err));
 };
@@ -80,8 +80,8 @@ const getData = async () => {
 exApp.get('/', (req, res, next) => {
 	getData();
 	//read stored jsons and render the 2 news columns
-	let ansa = fs.readFileSync(path.resolve(__dirname, '../data/ansa.json'));
-	let aften = fs.readFileSync(path.resolve(__dirname, '../data/aften.json'));
+	let ansa = fs.readFileSync('ansa.json');
+	let aften = fs.readFileSync('aften.json');
 
 	res.render('index', {
 		ansa: JSON.parse(ansa),
