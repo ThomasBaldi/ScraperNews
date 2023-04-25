@@ -2,8 +2,6 @@ const express = require('express');
 const axios = require('axios');
 const cheerio = require('cheerio');
 const cors = require('cors');
-const fs = require('@cyclic.sh/s3fs')(process.env.CYCLIC_BUCKET_NAME);
-const path = require('path');
 
 const exApp = express();
 exApp.use(cors());
@@ -12,14 +10,14 @@ exApp.use(cors());
 const urlAnsa = 'https://www.ansa.it/sito/notizie/mondo/mondo.shtml?refresh_ce';
 const urlAften = 'https://www.aftenposten.no/nyheter/';
 
-//scraper function
-const getData = async () => {
+exApp.get('/', async (req, res, next) => {
+	//scrape and store ansa news in ansaNews array
+	var ansaNews = [];
 	await axios
 		.get(urlAnsa)
 		.then((response) => {
 			const html = response.data;
 			const $ = cheerio.load(html);
-			const ansaNews = [];
 			//headliner world news
 			$('.news-inner', html).each(function () {
 				const title = $(this).find('.pp-title').text();
@@ -31,7 +29,7 @@ const getData = async () => {
 					img,
 				});
 			});
-			// headlining follow up news
+			// headlining followup news
 			$('.news-inner > .news-more > li', html).each(function () {
 				const title = $(this).find('a').text();
 				const url = $(this).find('a').attr('href');
@@ -51,16 +49,16 @@ const getData = async () => {
 					img,
 				});
 			});
-			fs.writeFileSync('ansa.json', JSON.stringify(ansaNews));
 		})
 		.catch((err) => console.log(err));
 
+	//scrape and store aftenposten news in aftenNews array
+	var aftenNews = [];
 	await axios
 		.get(urlAften)
 		.then((response) => {
 			const html = response.data;
 			const $ = cheerio.load(html);
-			const aftenNews = [];
 			$('article', html).each(function () {
 				const title = $(this).find('img').attr('alt');
 				const url = $(this).find('a').attr('href');
@@ -71,21 +69,12 @@ const getData = async () => {
 					img,
 				});
 			});
-			fs.writeFileSync('aften.json', JSON.stringify(aftenNews));
 		})
 		.catch((err) => console.log(err));
-};
-
-//call function to scrape and rewrite json files and render them
-exApp.get('/', (req, res, next) => {
-	getData();
-	//read stored jsons and render the 2 news columns
-	let ansa = fs.readFileSync('ansa.json');
-	let aften = fs.readFileSync('aften.json');
 
 	res.render('index', {
-		ansa: JSON.parse(ansa),
-		aften: JSON.parse(aften),
+		ansa: ansaNews,
+		aften: aftenNews,
 	});
 });
 
