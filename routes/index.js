@@ -12,9 +12,9 @@ exApp.use(cors());
 const urlAnsa = 'https://www.ansa.it/sito/notizie/mondo/mondo.shtml?refresh_ce';
 const urlAften = 'https://www.aftenposten.no/nyheter/';
 
-//retrieve data when landing on homepage and store it in jsons
-exApp.get('/', (req, res, next) => {
-	axios
+//scraper function
+const getData = async () => {
+	await axios
 		.get(urlAnsa)
 		.then((response) => {
 			const html = response.data;
@@ -54,11 +54,8 @@ exApp.get('/', (req, res, next) => {
 			fs.writeFileSync(path.resolve(__dirname, '../data/ansa.json'), JSON.stringify(ansaNews));
 		})
 		.catch((err) => console.log(err));
-	next();
-});
 
-exApp.get('/', (req, res, next) => {
-	axios
+	await axios
 		.get(urlAften)
 		.then((response) => {
 			const html = response.data;
@@ -77,10 +74,11 @@ exApp.get('/', (req, res, next) => {
 			fs.writeFileSync(path.resolve(__dirname, '../data/aften.json'), JSON.stringify(aftenNews));
 		})
 		.catch((err) => console.log(err));
-	next();
-});
+};
 
+//call function to scrape and rewrite json files and render them
 exApp.get('/', (req, res, next) => {
+	getData();
 	//read stored jsons and render the 2 news columns
 	let ansa = fs.readFileSync(path.resolve(__dirname, '../data/ansa.json'));
 	let aften = fs.readFileSync(path.resolve(__dirname, '../data/aften.json'));
