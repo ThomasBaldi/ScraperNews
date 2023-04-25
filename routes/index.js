@@ -51,7 +51,7 @@ const getData = async () => {
 					img,
 				});
 			});
-			fs.writeFileSync('ansa.json'), JSON.stringify(ansaNews);
+			fs.writeFileSync('ansa.json', JSON.stringify(ansaNews));
 		})
 		.catch((err) => console.log(err));
 
@@ -71,7 +71,7 @@ const getData = async () => {
 					img,
 				});
 			});
-			fs.writeFileSync('aften.json'), JSON.stringify(aftenNews);
+			fs.writeFileSync('aften.json', JSON.stringify(aftenNews));
 		})
 		.catch((err) => console.log(err));
 };
