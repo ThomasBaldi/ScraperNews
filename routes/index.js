@@ -2,7 +2,7 @@ const express = require('express');
 const axios = require('axios');
 const cheerio = require('cheerio');
 const cors = require('cors');
-const fs = require('@cyclic.sh/s3fs')(S3_BUCKET_NAME);
+const fs = require('@cyclic.sh/s3fs');
 const path = require('path');
 
 const exApp = express();
